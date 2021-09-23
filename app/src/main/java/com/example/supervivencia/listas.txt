@@ -1,0 +1,40 @@
+public void rellenarNormalDuo(){
+        listaNormalDuo.add("esta manteniendo una aventura en secreto con");
+        listaNormalDuo.add("se ha ido de fiesta con ");
+        listaNormalDuo.add("se ha metido unas rayas con ");
+        listaNormalDuo.add("se esta drogando con ");
+        listaNormalDuo.add("se esta peleando con ");
+        listaNormalDuo.add("tiene un duelo de baile con ");
+        listaNormalDuo.add("esta haciendo el amor con ");
+        listaNormalDuo.add("se esta enamorando de ");
+        listaNormalDuo.add("está durmiendo abrazado con ");
+        listaNormalDuo.add("ha montado una nueva religión con ");
+        listaNormalDuo.add("está fumandose un piti con ");
+    }
+    public void rellenarMuertes(){
+        listaFormasMuerte.clear();
+        listaFormasMuerte.add("mató sin querer a ");
+        listaFormasMuerte.add("descuartizó a ");
+        listaFormasMuerte.add("envenenó a ");
+        listaFormasMuerte.add("disparó a quemaropa a ");
+        listaFormasMuerte.add("quemó vivo a ");
+        listaFormasMuerte.add("decapitó a ");
+        listaFormasMuerte.add("tiró por un precipicio a ");
+        listaFormasMuerte.add("contrató a un sicario y mató a ");
+        listaFormasMuerte.add("traicionó y mató a ");
+        listaFormasMuerte.add("abofeteó hasta la muerte a ");
+        listaFormasMuerte.add("apuñaló por la espalda a ");
+        listaFormasMuerte.add("se comió vivo a ");
+        listaFormasMuerte.add("envenenó un piti y se lo dió a ");
+    }
+    public void rellenarSuicidio(){
+        listaSuicidio.add("se cayó por un barranco");
+        listaSuicidio.add("fué devorado por un chiguagua");
+        listaSuicidio.add("le aplastó una roca gigante");
+        listaSuicidio.add("le dió una sobredosis");
+        listaSuicidio.add("se ahogó comiendose un chicle");
+        listaSuicidio.add("le dió un coma etílico");
+        listaSuicidio.add("fué asesinado por una ardilla asesina");
+        listaSuicidio.add("fué secuestrado por unos extraterrestres");
+        listaSuicidio.add("fué apuñalado por un gitano");
+    }
