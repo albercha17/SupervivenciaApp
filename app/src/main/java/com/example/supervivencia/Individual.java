@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class PuebloIndividual extends AppCompatActivity {
+public class Individual extends AppCompatActivity {
     int numDia=0;
     int numAccion=5;
     int accion;
@@ -75,48 +75,36 @@ public class PuebloIndividual extends AppCompatActivity {
     // RELLENAR LISTAS //
 
     public void rellenarListas(){
-        rellenarMuertes();
-        rellenarSuicidio();
-        rellenarNormalDuo();
         rellenarNombres();
-        rellenarComabteFinal();
     }
 
     public void rellenarNombres(){
-        listaNombres.clear();
+        int modo=0;
         listaS.clear();
-        listaNombres.add("Esther");
-        listaNombres.add("Alberto");
-        listaNombres.add("Molina");
-        listaNombres.add("Ana");
-        listaNombres.add("Maria");
-        listaNombres.add("Josh");
-        listaNombres.add("Arturo");
-        listaNombres.add("Irene");
-        listaNombres.add("Lucia");
-        listaNombres.add("Claudia");
-        listaNombres.add("Paquito");
-        listaNombres.add("Alberto Zaragoza");
-        listaNombres.add("Daniela");
-        listaNombres.add("Ricar");
-        listaNombres.add("Miguel");
-        listaNombres.add("Cris");
-    }
-    public void rellenarNormalDuo(){
-        listaNormalDuo.clear();
-        listaNormalDuo=listas.rellenarNadaDuo();
-    }
-    public void rellenarMuertes(){
-        listaFormasMuerte.clear();
-        listaFormasMuerte=listas.rellenarMuertes();
-    }
-    public void rellenarSuicidio(){
-        listaSuicidio.clear();
-        listaSuicidio=listas.rellenarSuicidios();
-    }
-    public void rellenarComabteFinal(){
-        combateFinal.clear();
-        combateFinal=listas.rellenarCombateFinal();
+        listaNombres.clear();
+        Bundle extras= getIntent().getExtras();
+        modo=extras.getInt("modo");
+        if(modo==3) {
+            String x = extras.getString("nombres");
+            String[] partes = x.split(",");
+            for (int i = 0; i < partes.length; i++) {
+                listaNombres.add(partes[i]);
+            }
+        }
+        if(modo==2) {
+            listaNombres=listas.rellenarSupervivientes(2);
+        }
+        if(modo==1) {
+            listaNombres=listas.rellenarSupervivientes(1);
+        }
+
+        ArrayList<String> z = new ArrayList<String>();
+        while(listaNombres.size()>0){
+            int x=(int)(Math.random()*listaNombres.size());
+            z.add(listaNombres.get(x));
+            listaNombres.remove(x);
+        }
+        listaNombres=z;
     }
 
     public  void aleatorio(){
@@ -151,19 +139,19 @@ public class PuebloIndividual extends AppCompatActivity {
 
             // MUERTE
             if(accion==0) {
-                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listaFormasMuerte.get(numeroFormaMorir) + " " + listaS.get(numeroMuerto).getNombre();
+                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listas.rellenarMuertes()  + " " + listaS.get(numeroMuerto).getNombre();
                 listaS.remove(numeroMuerto);
                 muerteV.setText("MUERTE");
             }
             // SUICIDIO
             else if(accion==1){
-                muertes_frase = listaS.get(numeroMuerto).getNombre() + " " + listaSuicidio.get(numeroFormaSuicicio);
+                muertes_frase = listaS.get(numeroMuerto).getNombre() + " " + listas.rellenarSuicidios();
                 listaS.remove(numeroMuerto);
                 suicidioV.setText("SUICIDIO");
             }
             //COSAS NORMALES POR PAREJAS
             else if(accion>=2){
-                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listaNormalDuo.get(numeroNormalDuo) + " " + listaS.get(numeroMuerto).getNombre();
+                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listas.rellenarNadaDuo()+ " " + listaS.get(numeroMuerto).getNombre();
                 nadaV.setText("NADA");
             }
 
@@ -180,12 +168,12 @@ public class PuebloIndividual extends AppCompatActivity {
         else if(listaS.size()==2){
             aleatorio();
             if(accion==0){
-                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listaFormasMuerte.get(numeroFormaMorir) + " " + listaS.get(numeroMuerto).getNombre();
+                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listas.rellenarMuertes() + " " + listaS.get(numeroMuerto).getNombre();
                 listaS.remove(numeroMuerto);
                 muerteV.setText("MUERTE");
             }
             else{
-                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + combateFinal.get(numComF) + " " + listaS.get(numeroMuerto).getNombre();
+                muertes_frase = listaS.get(numeroDelQueMata).getNombre() + " " + listas.rellenarCombateFinal() + " " + listaS.get(numeroMuerto).getNombre();
                 muerteV.setText("COMBATE FINAL");
             }
             numDia++;

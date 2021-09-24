@@ -15,12 +15,14 @@ public class ElegirModoDuo extends AppCompatActivity {
     }
 
     public void pueblo(View view){
-        Intent i= new Intent(this, PuebloDuos.class);
-        startActivity(i);
+        Intent z= new Intent(this, Duos.class);
+        z.putExtra("modo",1);
+        startActivity(z);
     }
     public void madrid(View view){
-        Intent y= new Intent(this, MadridDuos.class);
-        startActivity(y);
+        Intent z= new Intent(this, Duos.class);
+        z.putExtra("modo",2);
+        startActivity(z);
     }
     public void libre(View view){
         Intent z= new Intent(this, LibreDuos.class);

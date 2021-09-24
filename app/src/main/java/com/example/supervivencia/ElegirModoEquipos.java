@@ -15,18 +15,20 @@ public class ElegirModoEquipos extends AppCompatActivity {
     }
 
     public void pueblo(View view){
-        Intent i= new Intent(this, PuebloEquipos.class);
-        startActivity(i);
+        Intent z= new Intent(this, Equipo.class);
+        z.putExtra("modo",1);
+        startActivity(z);
     }
     public void madrid(View view){
-        Intent y= new Intent(this, MadridEquipos.class);
-        startActivity(y);
+        Intent z= new Intent(this, Equipo.class);
+        z.putExtra("modo",2);
+        startActivity(z);
     }
     public void libre(View view){
         Intent z= new Intent(this, LibreEquipo.class);
         startActivity(z);
     }
-    public void unovsuno(View view){
+    public void UnosVsUno(View view){
         Intent z= new Intent(this, UnoVsUno_I.class);
         startActivity(z);
     }

@@ -15,12 +15,14 @@ public class ElegirModo extends AppCompatActivity {
     }
 
     public void pueblo(View view){
-        Intent i= new Intent(this, PuebloIndividual.class);
-        startActivity(i);
+        Intent z= new Intent(this, Individual.class);
+        z.putExtra("modo",1);
+        startActivity(z);
     }
     public void madrid(View view){
-        Intent y= new Intent(this, MadridIndividual.class);
-        startActivity(y);
+        Intent z= new Intent(this, Individual.class);
+        z.putExtra("modo",2);
+        startActivity(z);
     }
     public void libre(View view){
         Intent z= new Intent(this, LibreIndividual.class);

@@ -109,11 +109,7 @@ public class UNOVSUNO extends AppCompatActivity {
     // RELLENAR LISTAS //
 
     public void rellenarListas(){
-        rellenarMuertes();
-        rellenarSuicidio();
-        rellenarNormalDuo();
         rellenarNombres();
-        rellenarTraicion();
     }
 
     public void rellenarNombres(){
@@ -124,22 +120,6 @@ public class UNOVSUNO extends AppCompatActivity {
         String w= extras.getString("nombres2");
         listaNombres.add(x);
         listaNombres.add(w);
-    }
-    public void rellenarNormalDuo(){
-        listaNormalDuo.clear();
-        listaNormalDuo=listas.rellenarNadaDuo();
-    }
-    public void rellenarMuertes(){
-        listaFormasMuerte.clear();
-        listaFormasMuerte=listas.rellenarMuertes();
-    }
-    public void rellenarSuicidio(){
-        listaSuicidio.clear();
-        listaSuicidio=listas.rellenarSuicidios();
-    }
-    public void rellenarTraicion(){
-        listaTraicion.clear();
-        listaTraicion=listas.rellenarTraicion();
     }
     public  void aleatorio(){
         accion=(int)(Math.random()*numAccion);
@@ -187,24 +167,24 @@ public class UNOVSUNO extends AppCompatActivity {
             if(equipo==1) {
                 // MUERTE
                 if (accion == 0) {
-                    muertes_frase = equipo1.get(numeroDelQueMata1).getNombre() + " " + listaFormasMuerte.get(numeroFormaMorir) + " " + equipo2.get(numeroMuerto2).getNombre();
+                    muertes_frase = equipo1.get(numeroDelQueMata1).getNombre() + " " + listas.rellenarMuertes()+ " " + equipo2.get(numeroMuerto2).getNombre();
                     equipo2.remove(numeroMuerto2);
                     muerteV.setText("MUERTE");
                 }
                 // SUICIDIO
                 else if (accion == 1) {
-                    muertes_frase = equipo1.get(numeroMuerto1).getNombre() + " " + listaSuicidio.get(numeroFormaSuicicio);
+                    muertes_frase = equipo1.get(numeroMuerto1).getNombre() + " " + listas.rellenarSuicidios();
                     equipo1.remove(numeroMuerto1);
                     suicidioV.setText("SUICIDIO");
                 }
                 //COSAS NORMALES POR PAREJAS
                 else if (accion == 2) {
-                    muertes_frase = equipo1.get(numeroDelQueMata1).getNombre() + " " + listaNormalDuo.get(numeroNormalDuo) + " " + equipo1.get(numeroMuerto1).getNombre();
+                    muertes_frase = equipo1.get(numeroDelQueMata1).getNombre() + " " + listas.rellenarNadaDuo() + " " + equipo1.get(numeroMuerto1).getNombre();
                     nadaV.setText("NADA");
                 }
                 //TRAICION
                 else if (accion == 3) {
-                    muertes_frase = equipo1.get(numeroDelQueMata1).getNombre() + " " + listaTraicion.get(numeroTraicion);
+                    muertes_frase = equipo1.get(numeroDelQueMata1).getNombre() + " " + listas.rellenarTraicion();
                     equipo2.add(equipo1.get(numeroDelQueMata1));
                     equipo1.remove(numeroDelQueMata1);
                     suicidioV.setText("TRAICIÓN");
@@ -213,23 +193,23 @@ public class UNOVSUNO extends AppCompatActivity {
             else{
                 // MUERTE
                 if (accion == 0) {
-                    muertes_frase = equipo2.get(numeroDelQueMata2).getNombre() + " " + listaFormasMuerte.get(numeroFormaMorir) + " " + equipo1.get(numeroMuerto1).getNombre();
+                    muertes_frase = equipo2.get(numeroDelQueMata2).getNombre() + " " + listas.rellenarMuertes()+ " " + equipo1.get(numeroMuerto1).getNombre();
                     equipo1.remove(numeroMuerto1);
                     muerteV.setText("MUERTE");
                 }
                 // SUICIDIO
                 else if (accion == 1) {
-                    muertes_frase = equipo2.get(numeroMuerto2).getNombre() + " " + listaSuicidio.get(numeroFormaSuicicio);
+                    muertes_frase = equipo2.get(numeroMuerto2).getNombre() + " " + listas.rellenarSuicidios();
                     equipo2.remove(numeroMuerto2);
                     suicidioV.setText("SUICIDIO");
                 }
                 //COSAS NORMALES POR PAREJAS
                 else if (accion == 2) {
-                    muertes_frase = equipo2.get(numeroDelQueMata2).getNombre() + " " + listaNormalDuo.get(numeroNormalDuo) + " " + equipo2.get(numeroMuerto2).getNombre();
+                    muertes_frase = equipo2.get(numeroDelQueMata2).getNombre() + " " + listas.rellenarNadaDuo()+ " " + equipo2.get(numeroMuerto2).getNombre();
                     nadaV.setText("NADA");
                 }
                 else if (accion == 3) {
-                    muertes_frase = equipo2.get(numeroDelQueMata2).getNombre() + " " + listaTraicion.get(numeroTraicion);
+                    muertes_frase = equipo2.get(numeroDelQueMata2).getNombre() + " " + listas.rellenarTraicion();
                     equipo1.add(equipo2.get(numeroDelQueMata2));
                     equipo2.remove(numeroDelQueMata2);
                     suicidioV.setText("TRAICIÓN");
@@ -243,10 +223,10 @@ public class UNOVSUNO extends AppCompatActivity {
         }
         else{
             if(equipo1.size()>1) {
-                muertes_frase = "Ha ganado el equipo "+ equipo1.get(0).getNombre()+"!!!!!";
+                muertes_frase = "Ha ganado el equipo 1!!!!!";
             }
             else{
-                muertes_frase = "Ha ganado el equipo "+ equipo2.get(0).getNombre()+"!!!!!";
+                muertes_frase = "Ha ganado el equipo 2!!!!!";
             }
         }
         numDia++;

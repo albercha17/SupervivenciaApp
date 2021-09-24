@@ -17,8 +17,9 @@ public class LibreDuos extends AppCompatActivity {
     }
     public void empezar(View view){
         String x= nombres.getText().toString();
-        Intent z= new Intent(this, LibreD.class);
+        Intent z= new Intent(this, Duos.class);
         z.putExtra("nombres",x);
+        z.putExtra("modo",3);
         startActivity(z);
     }
 }
